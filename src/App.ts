@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import logger from "morgan";
 import helmet from "helmet";
+import UserRouter from './routes/v0/user.routes';
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 class App {
   public express: express.Application;
@@ -27,6 +28,7 @@ class App {
       });
     });
     this.express.use("/", router);
+    this.express.use('/v0/users', UserRouter);
   }
 }
 

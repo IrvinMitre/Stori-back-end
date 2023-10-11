@@ -5,7 +5,7 @@
 This project consists of an MVC API built with TypeScript and Node.
 
 ## Features
-- 
+- Services Login
 
 ## Running this API:
 To run this frontend application, you'll need to follow these steps:
