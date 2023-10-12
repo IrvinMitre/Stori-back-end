@@ -6,3 +6,7 @@ export const verifyPassword = async (
 ) => {
   return bcrypt.compare(password, hashedPassword);
 };
+
+export const hashPassword = async (password: string) => {
+  return bcrypt.hashSync(password, Number(`${process.env.SALT_ROUNDS || 10}`));
+};

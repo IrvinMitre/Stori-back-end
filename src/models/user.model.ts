@@ -3,9 +3,10 @@ import { UserInterface } from '../interfaces/user.interface';
 import mongoose from '../database';
 
 const schema = new mongoose.Schema({
-  name: String,
+  email: String,
   rol: String,
   password: String,
+  topics: Array<String>,
   created_at: {
     type: Date,
     default: Date.now,

@@ -1,3 +1,4 @@
+import { UserInterface } from "src/interfaces/user.interface";
 import User from "../models/user.model";
 
 export default class UserService {
@@ -9,5 +10,10 @@ export default class UserService {
     return await User.findOne({
       email,
     });
+  }
+
+  async createUser(user: UserInterface) {
+    const newUser = new User(user);
+    return await newUser.save();
   }
 }
