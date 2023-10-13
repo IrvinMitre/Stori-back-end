@@ -11,6 +11,7 @@ export class TopicRouter {
 
   init = () => {
     this.router.post("", this.topic.create);
+    this.router.get("/listTopics", this.topic.getList);
   };
 }
 

@@ -7,7 +7,9 @@ export default class TopicService {
     return await newTopic.save();
   }
 
-  async getTopics() {
-    return Topic.find();
+  async getTopics(limit: number, offset: number) {
+    const count = await Topic.count()
+    const topics = await Topic.find().skip(offset).limit(limit);
+    return {count, limit, offset, topics};
   }
 }
