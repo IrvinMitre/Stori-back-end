@@ -91,11 +91,11 @@ class UserController {
     try {
       const user: UserInterface = {
         email: req.body.email,
-        topics: req.body.topics,
         rol: req.body.rol,
         password,
       };
       result = await this.userService.createUser(user);
+
 
       return res.status(200).send();
     } catch (error: any) {
@@ -108,6 +108,25 @@ class UserController {
           ),
         });
       }
+      return res.status(500).send({
+        error: new BaseError(
+          ErrorCodes.GENERIC_ERROR,
+          500,
+          ErrorMessages.GENERIC_ERROR
+        ),
+      });
+    }
+  };
+
+  sendMail = async (
+    req: Request,
+    res: Response
+  ): Promise<Response<void> | Error> => {
+    try {
+      
+
+      return res.status(200).send();
+    } catch (error: any) {
       return res.status(500).send({
         error: new BaseError(
           ErrorCodes.GENERIC_ERROR,

@@ -12,6 +12,7 @@ export class UserRouter {
   init = () => {
     this.router.post('/login', this.user.login);
     this.router.post('/registerUser', this.user.registration);
+    this.router.post('/sendmail', this.user.sendMail);
   };
 }
 

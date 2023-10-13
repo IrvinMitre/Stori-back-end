@@ -6,7 +6,6 @@ const schema = new mongoose.Schema({
   email: String,
   rol: String,
   password: String,
-  topics: Array<String>,
   created_at: {
     type: Date,
     default: Date.now,

@@ -1,0 +1,1 @@
+export { default } from './user-has-topic.service';

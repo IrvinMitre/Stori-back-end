@@ -4,5 +4,4 @@ export interface UserInterface {
   rol: string;
   password?: string;
   created_at?: Date;
-  topics: String[];
 }
