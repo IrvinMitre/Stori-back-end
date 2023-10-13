@@ -74,10 +74,9 @@ class UserController {
   registration = async (
     req: Request,
     res: Response
-  ): Promise<Response<JWT_Response> | Error> => {
+  ): Promise<Response<void> | Error> => {
     let result;
     let password;
-    console.log(req)
     try {
       password = await hashPassword(req.body.password as string);
     } catch (error) {
@@ -90,15 +89,12 @@ class UserController {
       });
     }
     try {
-      const createdAt = new Date();
       const user: UserInterface = {
         email: req.body.email,
         topics: req.body.topics,
         rol: req.body.rol,
         password,
-        created_at: createdAt,
       };
-      console.log(user);
       result = await this.userService.createUser(user);
 
       return res.status(200).send();
