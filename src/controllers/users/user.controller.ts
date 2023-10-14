@@ -8,6 +8,7 @@ import { createJWTToken, createJWTRefreshToken } from "../../utils/authUtils";
 import { UserInterface } from "../../interfaces/user.interface";
 import { LoginUserDto } from "../../dtos/users/loginUser.dto";
 import { ErrorCodes, ErrorMessages } from "../../shared/errors/errors";
+import nodemailer from 'nodemailer';
 
 class UserController {
   private userService: UserService;
@@ -123,7 +124,23 @@ class UserController {
     res: Response
   ): Promise<Response<void> | Error> => {
     try {
-      
+      let transport = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        secure: true,
+        auth: {
+          user: "irvinmitre160@gmail.com",
+          pass: "kcfcyiyfckmhzbqz",
+        },
+      });
+    const message = {
+      from: 'irvinmitre160@gmail.com',
+      to: 'irvinmitre160@gmail.com',       
+      subject: 'Design Your Model S | Tesla',
+      text: 'Have the most fun you can in a car. Get your Tesla today!' 
+  };
+  
+  transport.sendMail(message);
+  await transport.close();
 
       return res.status(200).send();
     } catch (error: any) {
